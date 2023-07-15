@@ -1,4 +1,4 @@
-import {Rule} from 'sanity'
+import {Rule, Selection} from 'sanity'
 
 export default {
   title: 'Post',
@@ -16,6 +16,7 @@ export default {
       name: 'photo',
       type: 'image',
     },
+    {title: 'Content', name: 'content', type: 'string'},
     {
       title: 'Likes',
       name: 'likes',
@@ -49,4 +50,20 @@ export default {
       ],
     },
   ],
+  preview: {
+    select: {
+      title: 'content',
+      authorName: 'author.name',
+      authorUsername: 'author.username',
+      media: 'photo',
+    },
+    prepare(selection: {title: string; authorName: string; authorUsername: string; media: string}) {
+      const {title, authorName, authorUsername, media} = selection
+      return {
+        title,
+        subtitle: `by ${authorName} (${authorUsername})`,
+        media,
+      }
+    },
+  },
 }
