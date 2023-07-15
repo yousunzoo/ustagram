@@ -1,3 +1,4 @@
+import Navbar from '@/components/common/Navbar';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='ko-KR'>
-			<body className={openSans.className}>{children}</body>
+			<body className={openSans.className}>
+				<Navbar />
+				{children}
+			</body>
 		</html>
 	);
 }
