@@ -19,7 +19,7 @@ const menus = [
 ];
 function Navbar() {
 	return (
-		<div className='w-[244px] h-full border-r-[1px] border-gray-300 py-5 px-3'>
+		<div className='sticky top-0 w-[244px] h-full border-r-[1px] border-gray-300 py-5 px-3'>
 			<div className='w-full h-[73px] py-4 px-3 mb-5'>
 				<Link href='/' className='block relative w-full h-full text-2xl font-bold'>
 					UStagram
