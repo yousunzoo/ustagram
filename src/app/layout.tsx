@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang='ko-KR'>
-			<body className={`${openSans.className} flex`}>
+		<html lang='ko-KR' className={openSans.className}>
+			<body className='flex max-w-screen-xl'>
 				<Navbar />
 				<main>{children}</main>
 			</body>
