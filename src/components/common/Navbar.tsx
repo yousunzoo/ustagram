@@ -1,4 +1,5 @@
 'use client';
+import { useSession, signIn, signOut } from 'next-auth/react';
 import Link from 'next/link';
 import HomeIcon from '../ui/icons/HomeIcon';
 import HomeActiveIcon from '../ui/icons/HomeActiveIcon';
@@ -20,6 +21,8 @@ const menus = [
 	{ icon: <AddIcon />, icon_active: <AddActiveIcon />, title: '만들기', href: '/write' },
 ];
 function Navbar() {
+	const { data: session } = useSession();
+
 	return (
 		<div className='sticky top-0 w-[244px] h-full border-r-[1px] z-10 border-gray-300 py-5 px-3'>
 			<div className='w-full h-[73px] py-4 px-3 mb-5'>
@@ -32,8 +35,11 @@ function Navbar() {
 					{menus.map((item) => (
 						<NavbarLi key={item.title} item={item} />
 					))}
-
-					<ColorButton text='로그인' handleClick={() => {}} />
+					{session ? (
+						<ColorButton text='로그아웃' handleClick={() => signOut()} />
+					) : (
+						<ColorButton text='로그인' handleClick={() => signIn()} />
+					)}
 				</ul>
 			</nav>
 		</div>
