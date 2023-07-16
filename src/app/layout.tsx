@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body className='flex max-w-screen-xl'>
 				<AuthContext>
 					<Navbar />
-					<main>{children}</main>
+					<main className='w-full'>{children}</main>
 				</AuthContext>
 			</body>
 		</html>

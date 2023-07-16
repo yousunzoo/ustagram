@@ -13,6 +13,9 @@ const authOptions = {
 			clientSecret: process.env.GOOGLE_OAUTH_SECRET || '',
 		}),
 	],
+	page: {
+		signIn: '/auth/signin',
+	},
 };
 
 const handler = NextAuth(authOptions);

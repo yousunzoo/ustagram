@@ -36,9 +36,9 @@ function Navbar() {
 						<NavbarLi key={item.title} item={item} />
 					))}
 					{session ? (
-						<ColorButton text='로그아웃' handleClick={() => signOut()} />
+						<ColorButton size='small' text='로그아웃' handleClick={() => signOut()} />
 					) : (
-						<ColorButton text='로그인' handleClick={() => signIn()} />
+						<ColorButton size='small' text='로그인' handleClick={() => signIn()} />
 					)}
 				</ul>
 			</nav>
