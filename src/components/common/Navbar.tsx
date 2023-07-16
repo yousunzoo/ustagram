@@ -44,7 +44,7 @@ function Navbar() {
 							<Link
 								className='p-3 flex items-center gap-4 hover:bg-gray-100 transition ease-in-out duration-200 rounded-md'
 								href={`/user/${user.username}`}>
-								<Avartar image={user.image} />
+								<Avartar image={user.image} size='small' highlight={false} />
 								<span className={pathname === `/user/${user.username}` ? 'font-bold' : ''}>프로필</span>
 							</Link>
 						</li>

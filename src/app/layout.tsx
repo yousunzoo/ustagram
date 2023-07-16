@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='ko-KR' className={openSans.className}>
-			<body className='flex max-w-screen-xl'>
+			<body className='flex max-w-screen-2xl'>
 				<AuthContext>
 					<Navbar />
 					<main className='w-full'>{children}</main>
