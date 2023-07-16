@@ -2,6 +2,7 @@ import Navbar from '@/components/common/Navbar';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
+import AuthContext from '@/context/AuthContext';
 
 const openSans = Open_Sans({ subsets: ['latin'] });
 
@@ -13,9 +14,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='ko-KR' className={openSans.className}>
-			<body className='flex max-w-screen-xl'>
-				<Navbar />
-				<main>{children}</main>
+			<body className='flex max-w-screen-2xl'>
+				<AuthContext>
+					<Navbar />
+					<main className='w-full'>{children}</main>
+				</AuthContext>
 			</body>
 		</html>
 	);
