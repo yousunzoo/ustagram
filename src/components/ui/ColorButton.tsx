@@ -1,7 +1,7 @@
 type Props = {
 	text: string;
 	handleClick: () => void;
-	size: 'small' | 'big';
+	size?: 'small' | 'big';
 };
 
 function ColorButton({ text, handleClick, size = 'small' }: Props) {

@@ -9,6 +9,8 @@ import AddIcon from '../ui/icons/AddIcon';
 import AddActiveIcon from '../ui/icons/AddActiveIcon';
 import NavbarLi from './NavbarLi';
 import ColorButton from '../ui/ColorButton';
+import Avartar from '../Avartar';
+import { usePathname } from 'next/navigation';
 
 const menus = [
 	{
@@ -22,6 +24,8 @@ const menus = [
 ];
 function Navbar() {
 	const { data: session } = useSession();
+	const pathname = usePathname();
+	const user = session?.user;
 
 	return (
 		<div className='sticky top-0 w-[244px] h-full border-r-[1px] z-10 border-gray-300 py-5 px-3'>
@@ -35,11 +39,23 @@ function Navbar() {
 					{menus.map((item) => (
 						<NavbarLi key={item.title} item={item} />
 					))}
-					{session ? (
-						<ColorButton size='small' text='로그아웃' handleClick={() => signOut()} />
-					) : (
-						<ColorButton size='small' text='로그인' handleClick={() => signIn()} />
+					{user && (
+						<li className='mb-3'>
+							<Link
+								className='p-3 flex items-center gap-4 hover:bg-gray-100 transition ease-in-out duration-200 rounded-md'
+								href={`/user/${user.username}`}>
+								<Avartar image={user.image} />
+								<span className={pathname === `/user/${user.username}` ? 'font-bold' : ''}>프로필</span>
+							</Link>
+						</li>
 					)}
+					<li>
+						{session ? (
+							<ColorButton size='small' text='로그아웃' handleClick={() => signOut()} />
+						) : (
+							<ColorButton size='small' text='로그인' handleClick={() => signIn()} />
+						)}
+					</li>
 				</ul>
 			</nav>
 		</div>

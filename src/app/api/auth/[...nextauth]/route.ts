@@ -1,8 +1,9 @@
-import NextAuth from 'next-auth';
+import { isDev } from 'sanity';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import GithubProvider from 'next-auth/providers/github';
 
-const authOptions = {
+const authOptions: NextAuthOptions = {
 	providers: [
 		GithubProvider({
 			clientId: process.env.GITHUB_OAUTH_ID || '',
@@ -13,7 +14,19 @@ const authOptions = {
 			clientSecret: process.env.GOOGLE_OAUTH_SECRET || '',
 		}),
 	],
-	page: {
+	callbacks: {
+		async session({ session }) {
+			const user = session?.user;
+			if (user) {
+				session.user = {
+					...user,
+					username: user.email?.split('@')[0] || '',
+				};
+			}
+			return session;
+		},
+	},
+	pages: {
 		signIn: '/auth/signin',
 	},
 };
