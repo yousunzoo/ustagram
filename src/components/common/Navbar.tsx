@@ -37,7 +37,7 @@ function Navbar() {
 			<nav>
 				<ul>
 					{menus.map((item) => (
-						<NavbarLi key={item.title} item={item} />
+						<NavbarLi key={item.title} item={item} pathname={pathname} />
 					))}
 					{user && (
 						<li className='mb-3'>

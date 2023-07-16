@@ -1,4 +1,3 @@
-import { isDev } from 'sanity';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import GithubProvider from 'next-auth/providers/github';
@@ -29,6 +28,7 @@ const authOptions: NextAuthOptions = {
 	pages: {
 		signIn: '/auth/signin',
 	},
+	secret: process.env.AUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);

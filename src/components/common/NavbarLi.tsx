@@ -8,8 +8,7 @@ interface IItem {
 	icon: ReactNode;
 	title: string;
 }
-function NavbarLi({ item }: { item: IItem }) {
-	const pathname = usePathname();
+function NavbarLi({ item, pathname }: { item: IItem; pathname: string }) {
 	return (
 		<li className='mb-2'>
 			<Link
