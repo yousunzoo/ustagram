@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { PropagateLoader } from 'react-spinners';
 import useSWR from 'swr';
 import Avartar from './Avartar';
+import ScrollableBar from './ui/ScrollableBar';
 
 export default function Storybar() {
 	const { data, isLoading: loading, error } = useSWR<DetailUser>('/api/me');
@@ -17,18 +18,16 @@ export default function Storybar() {
 				(!users || users.length === 0) && <p>팔로우하는 사람이 없습니다.</p>
 			)}
 			{users && users.length > 0 && (
-				<ul className='flex gap-4 w-full'>
+				<ScrollableBar>
 					{users.map(({ image, username }) => (
-						<li key={username}>
-							<Link href={`/user/${username}`} className='flex flex-col items-center w-16'>
-								<Avartar image={image} highlight />
-								<p className='w-full text-xs mt-1 text-center text-ellipsis overflow-hidden text-neutral-500'>
-									{username}
-								</p>
-							</Link>
-						</li>
+						<Link key={username} href={`/user/${username}`} className='flex flex-col items-center w-16'>
+							<Avartar image={image} highlight />
+							<p className='w-full text-xs mt-1 text-center text-ellipsis overflow-hidden text-neutral-500'>
+								{username}
+							</p>
+						</Link>
 					))}
-				</ul>
+				</ScrollableBar>
 			)}
 		</section>
 	);
