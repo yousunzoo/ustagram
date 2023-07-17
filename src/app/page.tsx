@@ -13,8 +13,8 @@ export default async function HomePage() {
 	}
 
 	return (
-		<section className='max-w-[850px] mx-auto flex flex-col md:flex-row '>
-			<div className='w-full basis-3/4 mr-16 pt-20'>
+		<section className='max-w-[1000px] mx-auto flex flex-col md:flex-row '>
+			<div className='w-full basis-2/3 max-w-[624px] pt-16'>
 				<Storybar />
 				<Postlist />
 			</div>

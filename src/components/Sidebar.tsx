@@ -7,12 +7,12 @@ type Props = {
 
 export default function Sidebar({ user: { name, username, image } }: Props) {
 	return (
-		<div className='basis-1/4 pt-20'>
+		<div className='basis-1/3 pt-16 ml-8'>
 			<div className='flex items-center'>
 				{image && <Avartar image={image} />}
 				<div className='ml-4'>
-					<p className='font-bold'>{username}</p>
-					<p className='text-lg text-neutral-500 leading-4'>{name}</p>
+					<p className='font-bold text-sm'>{username}</p>
+					<p className='text-xs text-neutral-500 leading-4'>{name}</p>
 				</div>
 			</div>
 			<p className='text-xs text-neutral-400 mt-8 break-keep'>
